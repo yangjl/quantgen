@@ -1,0 +1,57 @@
+---
+title: "Selection I"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Response to Selection
+
+Response to selection (`R`), it is the difference of mean phenotypic value between the offspring of the selection parents and the whole of the parental generation before selection.
+
+Selection differential (`S`), it is the mean phenotypic values of the individuals selected as parents expressed 
+as a deviation from the population mean. 
+$$
+S = T_s - T
+$$
+
+```{r}
+## simulate n individuals in parental population
+n = 1000
+parents <- rnorm(n)
+
+
+## select top 5% of parents and random mate them
+i = 0.05
+p <- head(sort(parents, decreasing=TRUE), round(length(parents)*i,0))
+k0 <- (rep(p, each=length(p)) + rep(p, times=length(p)))/2
+
+h2 = 0.8
+residualvar <- (var(parents) - h2*var(parents))/h2
+residual <- rnorm(length(k0), 0, sqrt(residualvar))
+
+k <- h2*k0 + residual 
+## estimate R and S
+R <- mean(k) - mean(parents)
+S <- mean(p) - mean(parents)
+
+R/S
+plot(k, k0)
+
+```
+
+## Including Plots
+```{r, echo=FALSE}
+
+hist(parents, breaks=100)
+#plot(density(parents))
+abline(v=qnorm(p=0.95), lty=2, lwd=3, col="red")
+```
+
+## Fig 11.1
+```{r}
+plot(k, k0)
+```
+
