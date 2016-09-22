@@ -1,0 +1,48 @@
+---
+title: "Selection II"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Short-term Results
+
+Variability of the responses:  
+1. Random drift due to the restricted number of parents;   
+2. Sampling error in estimating hte generation mean;  
+3. Variation of selection differentials;  
+4. Environmental factors.  
+
+### Sampling variance
+$$
+\sigma_R^2 = \sigma_d^2 + \sigma_e^2  
+= V_p(th^2/N_e + 1/M)
+$$
+
+In the equation, M denotes the of individuals measured.
+
+> Selection experiments often yield no response over the first one or two generations, or even longer, but give a clear response later. The reason is usually that the numbers have been too small and random drift in the 'wrong' direction has nullified the response.
+
+```{r}
+c=5
+i=1.271
+h2=0.3
+2*c^2/(i*h2)
+```
+
+### Reasons for Asymmetry of Response
+
+1. Random Drift  
+to do: simulate the response by considering drift.
+
+3. Inbreeding Depression  
+5. Genetic Asymmetry  
+6. Genes with large effect  
+
+
+> It is that if the character selected is a component of natural fitness, asymmetry should be expected, with selection towards increased fitness giving a slower response than selection towards decreased fitness.
+
+
+## Long-term Results
