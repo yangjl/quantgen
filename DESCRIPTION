@@ -1,13 +1,14 @@
 Package: quantgen
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Title: R package for basic quantgen simulation and/or modeling.
+Version: 0.1.3
+Authors@R: person("Jinliang", "Yang", email = "yangjl0930@gmail.com", role = c("aut", "cre"))
+Description: Tools to facilitate the basic undersanding of the introduction of
+    Quantitative Genetics.
+License: GPL (>= 2)
 LazyData: TRUE
-Imports: 
-    Rcpp (>= 0.12.6)
-LinkingTo: 
-    Rcpp
+Imports:
+    Rcpp (>= 0.12.6),
+    nlme
+LinkingTo: Rcpp
+RoxygenNote: 5.0.1
