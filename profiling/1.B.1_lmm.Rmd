@@ -1,0 +1,45 @@
+---
+title: "Linear Mixed Model"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir=normalizePath('../'))
+```
+
+## Comparing two models
+
+Read this [pdf](https://cran.r-project.org/web/packages/coxme/vignettes/lmekin.pdf) about the `lmekin` function.
+
+```{r}
+library(coxme)
+require(nlme)
+
+fit1 <- lme(effort~Type, random= ~ 1|Subject,data=ergoStool,
+            method="ML")
+fit2 <- lmekin(effort ~ Type + (1|Subject), data=ergoStool,
+               method="ML")
+print(fit1)
+print(fit2)
+
+
+```
+
+## Kinship Matrix
+
+Note that when there are kinship or ibd matrices, the coxme routine uses the matrix labels to match the proper row/col to the proper subject
+
+```{r}
+require(kinship2)
+load("data/gaw.rda")
+gped <- with(gdata, pedigree(id, father, mother, sex=sex, famid=famid))
+kmat <- kinship(gped)
+
+plot(gped[9])
+
+gfit1 <- lmekin(age ~ q1 + (1|id), data=gdata, varlist=kmat*2)
+
+```
+
+

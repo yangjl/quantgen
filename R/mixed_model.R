@@ -6,7 +6,6 @@
 #' @param data data to fit the model. [data.frame]
 #' @param model Fixed effects of the model, i.e. KRN ~ Genotype. [model]
 #' @param random Random effects of the model, i.e. ~1 | Farm/Rep. [model]
-#' @param trait Name of the phenotypic trait. [character]
 #'
 #' @return return a batch of shell scripts.
 #'
@@ -14,8 +13,7 @@
 #' blue <- mixed_model(data = df, model = KRN ~ Pedigree, random = ~1 | Farm/Rep, trait = "KRN")
 #'
 #' @export
-mixed_model <- function(data = df, model = KRN ~ Pedigree, random = ~1 | Farm/Rep,
-                        trait = "KRN") {
+mixed_model <- function(data = df, model = KRN ~ Pedigree, random = ~1 | Farm/Rep) {
   #library("nlme")
   trait <- as.character(model)[2]
   data <- data[!is.na(data[, trait]), ]

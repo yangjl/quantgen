@@ -1,6 +1,6 @@
-# farmeR
+# quantgen
 
-This is an R packages to generate genomic and bioinformatic pipelines and submit jobs on HPC system running slurm.
+This is an R packages for quantitative genetics study or simulation.
 
 ## Installation
 
