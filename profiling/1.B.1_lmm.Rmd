@@ -38,7 +38,7 @@ kmat <- kinship(gped)
 
 plot(gped[9])
 
-gfit1 <- lmekin(age ~ q1 + (1|id), data=gdata, varlist=kmat*2)
+gfit1 <- lmekin(age ~ q1 + (1|id), data=gdata, varlist=kmat*-0.1)
 
 ```
 
